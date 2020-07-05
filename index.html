@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Skyice,六角學員">
+    <meta name="description" content="練習如何用JS寫出BMI計算器">
+    <meta property="og:title" content="JS入門篇最終作業-BMI" />
+    <meta property="og:description" content="練習如何用JS寫出BMI計算器">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://drive.google.com/drive/u/1/folders/11glVftJmkXhzzh947qXzklaYqCIWUvhv" />
+    <meta property="og:image" content="https://i.postimg.cc/d0W8DVPQ/Logo.png" />
+    <title>BMI Caculator</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="header">
+            <h1><a href="#">BMI LOGO</a></h1>
+            <div class="inputdata">
+                <div class="infoarea">
+                    <label for="height">身高 cm</label>
+                    <input id="height" type="text" class="txtstyle" placeholder="請輸入身高">
+                </div>
+                <div class="infoarea">
+                    <label for="weight">體重 kg</label>
+                    <input id="weight" type="text" class="txtstyle" placeholder="請輸入體重">
+                </div>
+            </div>
+            <input type="button" value="看結果" class="result">
+            <div class="greenstyle btnresult">
+                <div class="greenstyle btnstatus">
+                    <p>20.90<br><span>BMI</span></p>
+                    <img class="greenicon" src="IMG/icons_loop.png" alt="重新整理">
+                </div>
+                <p>理想</p>
+            </div>
+        </div>
+        <div class="content">
+            <h2>BMI 紀錄</h2>
+            <ul class="list">
+                <li class="greenside record">
+                    <h3>理想</h3>
+                    <p><span>BMI</span> 20.90</p>
+                    <p><span>weight</span> 70kg</p>
+                    <p><span>height</span> 180cm</p>
+                    <input type="button" value="Delet" class="deletstyle">
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            <img src="IMG/BMICLogo.png" alt="BMI的LOGO">
+        </div>
+    </div>
+    <script src="JS/all.js"></script>
+</body>
+
+</html>

@@ -6,8 +6,8 @@
 //刪除bmi
 
 /* 定義 */
-var inputHeight = document.getElementById("height");
-var inputWeight = document.getElementById("weight");
+var inputHeight = document.querySelector("#height");
+var inputWeight = document.querySelector("#weight");
 var send = document.querySelector(".result");
 var btnReset = document.querySelector(".btnresult");
 var bmiList = document.querySelector(".list");

@@ -60,7 +60,6 @@ btnReset.addEventListener("click", bmiReset);
 bmiList.addEventListener("click", deletBmi);
 body.addEventListener("keydown", function (e) {
     var key = e.key;
-    console.log(key);
     switch (key) {
         case "Enter":
             caculatorBmi();

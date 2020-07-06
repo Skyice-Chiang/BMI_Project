@@ -114,6 +114,7 @@ body {
 .result {
     width           : 120px;
     height          : 120px;
+    font-family     : "微軟正黑體",sans-serif;
     line-height     : 1.5;
     text-align      : center;
     border-radius   : 50%;
@@ -137,7 +138,6 @@ body {
     display        : flex;
     justify-content: center;
     align-items    : center;
-    display        : none;
 }
 
 .btnstatus {
@@ -267,11 +267,17 @@ body {
     justify-content : space-between;
     align-items     : center;
     padding         : 0 10px 0 0;
+    margin-bottom   : 16px;
 }
 
 .record h3,
 p {
     font-size: 20px;
+}
+
+.record h3{
+    width: 80px;
+    margin-left: 20px;
 }
 
 .record p span {
@@ -312,6 +318,7 @@ p {
     width           : 6px;
     background-color: #86D73F;
     box-shadow      : 2px 0 3px 0 rgba(133, 215, 63, 0.29);
+    position        : absolute;
 }
 
 .list .blueside::before {
@@ -321,6 +328,7 @@ p {
     width           : 6px;
     background-color: #31BAF9;
     box-shadow      : 2px 0 3px 0 rgba(49, 186, 249, 0.29);
+    position        : absolute;
 }
 
 .list .yellowside::before {
@@ -330,6 +338,7 @@ p {
     width           : 6px;
     background-color: #FF982D;
     box-shadow      : 2px 0 3px 0 rgba(255, 152, 45, 0.29);
+    position        : absolute;
 }
 
 .list .orangeside::before {
@@ -339,6 +348,7 @@ p {
     width           : 6px;
     background-color: #FF6C02;
     box-shadow      : 2px 0 3px 0 rgba(255, 108, 2, 0.29);
+    position        : absolute;
 }
 
 .list .redside::before {
@@ -348,6 +358,7 @@ p {
     width           : 6px;
     background-color: #FF1200;
     box-shadow      : 2px 0 3px 0 rgba(255, 17, 0, 0.29);
+    position        : absolute;
 }
 
 

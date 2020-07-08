@@ -144,7 +144,7 @@ function caculatorBmi() {
         return;
     }
     //存入資料
-    bmiData.push(putData);
+    bmiData.unshift(putData);
     //執行渲染bmiList畫面
     renderBmi();
     //渲染出按鈕狀態

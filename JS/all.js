@@ -6,15 +6,16 @@
 //刪除bmi
 
 /* 定義 */
-var inputHeight = document.querySelector("#height");
-var inputWeight = document.querySelector("#weight");
-var send = document.querySelector(".result");
-var btnReset = document.querySelector(".btnresult");
-var bmiList = document.querySelector(".list");
-var bmiData = JSON.parse(localStorage.getItem("userData")) || [];
-var body = document.body;
-var btnStr = "";
-var bmiInfo = {
+let inputHeight = document.querySelector("#height");
+let inputWeight = document.querySelector("#weight");
+let send = document.querySelector(".result");
+let btnReset = document.querySelector(".btnresult");
+let bmiList = document.querySelector(".list");
+let allClear = document.querySelector(".allclear");
+let bmiData = JSON.parse(localStorage.getItem("userData")) || [];
+let body = document.body;
+let btnStr = "";
+let bmiInfo = {
     "overthin": {
         listclass: "blueside",
         btnclass: "bluestyle",
@@ -58,22 +59,26 @@ renderBmi();
 send.addEventListener("click", caculatorBmi);
 btnReset.addEventListener("click", bmiReset);
 bmiList.addEventListener("click", deletBmi);
+allClear.addEventListener("click", reset);
 body.addEventListener("keydown", function (e) {
-    var key = e.key;
-    switch (key) {
-        case "Enter":
-            caculatorBmi();
-            break;
-    }
+    let key = e.key;
+    // switch (key) {
+    //     case "Enter":
+    //         caculatorBmi();
+    //         break;
+    // }
+    if (key == "Enter") {
+        caculatorBmi();
+    };
 });
 
 /*渲染畫面*/
 function renderBmi() {
     localIn();
-    var str = "";
+    let str = "";
     bmiData.forEach(function (item, index) {
         //渲染bmiList
-        var li = `<li class="${item.bmiStatus.listclass} record">
+        let li = `<li class="${item.bmiStatus.listclass} record">
         <h3>${item.bmiStatus.nameStatus}</h3>
         <p><span>BMI</span> ${item.bmi}</p>
         <p><span>weight</span> ${item.weight}kg</p>
@@ -81,16 +86,17 @@ function renderBmi() {
         <input type="button" value="Delet" class="deletstyle" data-num="${index}">
         </li>`
         str += li;
-        //按鈕顯示bmi狀態
-        var resultStr = `<div class="${item.bmiStatus.btnclass} btnstatus">
-            <p class="${item.bmiStatus.btnclass}">${item.bmi}<br><span>BMI</span></p>
-            <img class="${item.bmiStatus.iconstyle}" src="IMG/icons_loop.png" alt="重新整理">
-            </div>
-            <p class="${item.bmiStatus.btnclass}">${item.bmiStatus.nameStatus}</p>`
-        btnStr = resultStr;
-    })
+    });
+
+    //按鈕顯示狀態
+    let resultStr = `<div class="${bmiData[0].bmiStatus.btnclass} btnstatus">
+    <p class="${bmiData[0].bmiStatus.btnclass}">${bmiData[0].bmi}<br><span>BMI</span></p>
+    <img class="${bmiData[0].bmiStatus.iconstyle}" src="IMG/icons_loop.png" alt="重新整理">
+    </div>
+    <p class="${bmiData[0].bmiStatus.btnclass}">${bmiData[0].bmiStatus.nameStatus}</p>`
+    btnStr = resultStr;
     bmiList.innerHTML = str;
-}
+};
 
 
 /*按鈕內容與輸入內容重置*/
@@ -99,21 +105,21 @@ function bmiReset() {
     btnReset.innerHTML = "";
     inputHeight.value = "";
     inputWeight.value = "";
-}
+};
 
 /*處理資料*/
 function caculatorBmi() {
-    var heightNum = parseInt(inputHeight.value);
-    var WeightNum = parseInt(inputWeight.value);
-    var bmiNum = (WeightNum / (heightNum / 100 * heightNum / 100)).toFixed(2);
-    var putData = {
+    let heightNum = parseInt(inputHeight.value);
+    let WeightNum = parseInt(inputWeight.value);
+    let bmiNum = (WeightNum / (heightNum / 100 * heightNum / 100)).toFixed(2);
+    let putData = {
         height: "",
         weight: "",
         bmi: "",
         bmiStatus: ""
     };
     //防呆機制
-    if (inputHeight.value == "" || inputWeight.value == "") {
+    if (inputHeight.value === "" || inputWeight.value === "") {
         alert("請輸入數值");
         inputHeight.value = "";
         inputWeight.value = "";
@@ -126,7 +132,7 @@ function caculatorBmi() {
         putData.weight = WeightNum;
         putData.bmi = bmiNum;
         send.style.display = "none";
-    }
+    };
     //BMI狀態判別
     if (bmiNum < 18.5) {
         putData.bmiStatus = bmiInfo["overthin"];
@@ -142,7 +148,7 @@ function caculatorBmi() {
         putData.bmiStatus = bmiInfo["superFat"];
     } else {
         return;
-    }
+    };
     //存入資料
     bmiData.unshift(putData);
     //執行渲染bmiList畫面
@@ -150,15 +156,20 @@ function caculatorBmi() {
     //渲染出按鈕狀態
     if (send.style.display == "none" || e.target.defaultValue !== "Delet") {
         btnReset.innerHTML = btnStr;
-    }
-}
+    };
+};
 
 /*刪除資料*/
 function deletBmi(e) {
     e.preventDefault();
-    var deletItem = e.target.dataset.num;
+    let deletItem = e.target.dataset.num;
     if (e.target.defaultValue !== "Delet") { return }
     bmiData.splice(deletItem, 1);
+    renderBmi();
+};
+//全部清除
+function reset() {
+    bmiData = [];
     renderBmi();
 }
 
@@ -166,4 +177,4 @@ function deletBmi(e) {
 /*存進localStorage */
 function localIn() {
     localStorage.setItem("userData", JSON.stringify(bmiData));
-}
+};

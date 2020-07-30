@@ -241,6 +241,7 @@ body {
     display         : flex;
     flex-direction  : column;
     align-items     : center;
+    position: relative;
 }
 
 .content h2 {
@@ -308,6 +309,11 @@ p {
     transform: scale(0.95);
 }
 
+.allclear{
+    position: absolute;
+    right: 30%;
+    top: 48px;
+}
 
 /* 狀態顏色 */
 

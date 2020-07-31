@@ -78,14 +78,13 @@ function renderBmi() {
     let str = "";
     bmiData.forEach(function (item, index) {
         //渲染bmiList
-        let li = `<li class="${item.bmiStatus.listclass} record">
+        str += `<li class="${item.bmiStatus.listclass} record">
         <h3>${item.bmiStatus.nameStatus}</h3>
         <p><span>BMI</span> ${item.bmi}</p>
         <p><span>weight</span> ${item.weight}kg</p>
         <p><span>height</span> ${item.height}cm</p>
         <input type="button" value="Delet" class="deletstyle" data-num="${index}">
         </li>`
-        str += li;
     });
 
     //按鈕顯示狀態

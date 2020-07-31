@@ -84,17 +84,19 @@ function renderBmi() {
         <p><span>weight</span> ${item.weight}kg</p>
         <p><span>height</span> ${item.height}cm</p>
         <input type="button" value="Delet" class="deletstyle" data-num="${index}">
-        </li>`
+        </li>`;
     });
+    bmiList.innerHTML = str;
 
     //按鈕顯示狀態
-    let resultStr = `<div class="${bmiData[0].bmiStatus.btnclass} btnstatus">
-    <p class="${bmiData[0].bmiStatus.btnclass}">${bmiData[0].bmi}<br><span>BMI</span></p>
-    <img class="${bmiData[0].bmiStatus.iconstyle}" src="IMG/icons_loop.png" alt="重新整理">
-    </div>
-    <p class="${bmiData[0].bmiStatus.btnclass}">${bmiData[0].bmiStatus.nameStatus}</p>`
-    btnStr = resultStr;
-    bmiList.innerHTML = str;
+    if (inputHeight.value !== "" && inputWeight.value !== "") {
+        let resultStr = `<div class="${bmiData[0].bmiStatus.btnclass} btnstatus">
+        <p class="${bmiData[0].bmiStatus.btnclass}">${bmiData[0].bmi}<br><span>BMI</span></p>
+        <img class="${bmiData[0].bmiStatus.iconstyle}" src="IMG/icons_loop.png" alt="重新整理">
+        </div>
+        <p class="${bmiData[0].bmiStatus.btnclass}">${bmiData[0].bmiStatus.nameStatus}</p>`
+        btnStr = resultStr;
+    }
 };
 
 
